@@ -1,0 +1,25 @@
+﻿Introduction:
+
+
+For this project, I was attempting to create a function that would allow for an agent to use search and play tic tac toe against an opponent. To do this, I created the minimax function.
+
+
+Methods:
+
+
+To do this, the first thing that I did was create the minVal and maxVal helper functions. These functions computed the best action to take (depending on whether its goal was to minimize or maximize) and then called the opposite function (which served as the recursion for this algorithm).
+
+
+I then completed the minimax function itself which kickstarted the recursion of the minVal and maxVal functions.
+
+
+Results:
+
+
+The system worked great. I was able to play a game of tic tac toe against the algorithm. The algorithm would make move decisions that would be meant to prevent me from winning.\
+
+
+Discussion:
+
+
+The methods used for this project were definitely appropriate. The minimax function was perfect for a tic tac toe situation in which a tree should be searched and a decision of which move is best to make needs to be made.
