@@ -17,8 +17,39 @@ def minimax(asp: AdversarialSearchProblem[GameState, Action]) -> Action:
     Output:
         an action (an element of asp.get_available_actions(asp.get_start_state()))
     """
-    ...
 
+    startState = asp.get_start_state()
+    player = startState.player_to_move()
+    bestMove = None
+    bestValue = float("-inf")
+
+    for action in asp.get_available_actions(startState):
+        nextState = asp.transition(startState, action)
+        val = minVal(asp, nextState, player)
+        if val > bestValue:
+            bestMove = action
+            bestValue = val
+    return bestMove
+
+def minVal(asp, state, player):
+    if (asp.is_terminal_state(state)):
+        return asp.evaluate_terminal(state)[player]
+    val = float("inf")
+    for action in asp.get_available_actions(state):
+        newState = asp.transition(state, action)
+        val = min(val, maxVal(asp, newState, player))
+    return val
+
+def maxVal(asp, state, player):
+    if (asp.is_terminal_state(state)):
+        return asp.evaluate_terminal(state)[player]
+    val = float("-inf")
+    for action in asp.get_available_actions(state):
+        newState = asp.transition(state, action)
+        val = max(val, minVal(asp, newState, player))
+    return val
+
+        
 
 def alpha_beta(asp: AdversarialSearchProblem[GameState, Action]) -> Action:
     """
